@@ -27,12 +27,17 @@ def main(env_name):
 def demo_playback(env_name, demo_paths):
     e = GymEnv(env_name)
     e.reset()
+    # extras = []
     for path in demo_paths:
         e.set_env_state(path['init_state_dict'])
+        if hasattr(e.env.env, "reset_object_properties"):
+            e.env.env.reset_object_properties()
         actions = path['actions']
         for t in range(actions.shape[0]):
             e.step(actions[t])
+            # extras.append(e.env.env.taxel_data)
             e.env.mj_render()
+        breakpoint()
 
 if __name__ == '__main__':
     main()
