@@ -5,7 +5,7 @@ import pickle
 
 
 finger_to_col_map = {"th": 4, "ff": 3, "mf": 2, "rf": 1, "lf": 0}
-knuckle_to_row_map = {"distal": 0, "middle": 1, "proximal": 2}
+knuckle_to_row_map = {"distal": 0, "middle": 1, "proximal": 2, "fingertip": 0}
 panel_to_idx_map = {}
 
 def plot_tactile_readings(data, max_taxel_reading=1.0):
@@ -23,7 +23,7 @@ def plot_tactile_readings(data, max_taxel_reading=1.0):
     plt.show()
 
 if __name__ == "__main__":
-    tactile_data = pickle.load(open('./real_tactile.pkl', 'rb'))[200:]
+    tactile_data = pickle.load(open('./real_tactile.pkl', 'rb'))
 
     n_timesteps = len(tactile_data)
     ani_interval = 25.0 * 1000 / n_timesteps
